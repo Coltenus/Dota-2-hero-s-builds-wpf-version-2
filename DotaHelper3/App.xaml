@@ -1,0 +1,25 @@
+﻿<Application x:Class="DotaHelper3.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DotaHelper3"
+             xmlns:viewModel="clr-namespace:DotaHelper3.view_models"
+             xmlns:view="clr-namespace:DotaHelper3.view"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="theme/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:WelcomeViewModel}">
+                <view:WelcomeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:HelperViewModel}">
+                <view:Helper/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
+                <view:Settings/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

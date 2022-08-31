@@ -1,0 +1,52 @@
+﻿<Window x:Name="window" x:Class="DotaHelper3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DotaHelper3"
+        xmlns:viewModel="clr-namespace:DotaHelper3.view_models"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Height="800" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+         WindowStyle="None" Background="Transparent" AllowsTransparency="True" MouseLeftButtonDown="window_MouseLeftButtonDown">
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    <Border x:Name="MainBorder" Background="DodgerBlue"
+            CornerRadius="25">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="13*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="6*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Column="1"
+                    Height="40"
+                    Style="{StaticResource ExitButton}"
+                    Click="Button_Click" Content="X"
+                    Margin="925,17,10,0" VerticalAlignment="Top" FontSize="24"
+                    FontWeight="Bold" FontFamily="Comic Sans MS"/>
+            <Button Grid.Column="1"
+                    Height="40"
+                    Style="{StaticResource ExitButton}"
+                    Click="Button_Click_2"  Content="_"
+                    Margin="880,17,55,0" VerticalAlignment="Top" FontSize="24"
+                    FontFamily="Comic Sans MS" FontWeight="Bold" RenderTransformOrigin="-10.635,0.47"/>
+            <Label Content="Hero's builds" FontFamily="Comic Sans MS" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Row="3">
+                <RadioButton Content="About" Style="{StaticResource MenuElement1}"
+                             IsChecked="True" Command="{Binding AboutViewCommand}"/>
+                <RadioButton Content="Helper" Style="{StaticResource MenuElement1}"
+                             Command="{Binding HelperCommand}"/>
+                <RadioButton Content="Settings" Style="{StaticResource MenuElement1}"
+                             Command="{Binding SettingsCommand}"/>
+            </StackPanel>
+            <ContentControl x:Name="ContContrl" Content="{Binding CurrentView, NotifyOnSourceUpdated=True}"
+                            Grid.Column="1" Margin="10" Grid.Row="1"
+                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+    </Border>
+</Window>
